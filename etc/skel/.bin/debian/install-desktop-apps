@@ -1,0 +1,150 @@
+#!/usr/bin/bash
+
+clear
+echo "Copying scripts to /usr/local/bin"
+sudo cp bin/* /usr/local/bin
+sudo chown root:root /usr/local/bin/*
+sudo chmod 755 /usr/local/bin/*
+sleep 2
+
+clear
+PACKAGES_LIST="gnome-shell-extensions chrome-gnome-shell aspell aspell-he flatpak gnome-software-plugin-flatpak nautilus-admin imagemagick nautilus-image-converter unattended-upgrades seahorse-nautilus"
+
+for PKG in $PACKAGES_LIST
+do
+    clear
+    dpkg -l | grep ii | cut -c 1-35 | grep -qw $PKG || sudo apt -y install $PKG
+    echo "Installing $PKG ..."
+    sleep 2
+done
+sleep 2
+clear
+
+echo "Do you want to install ubuntu-restricted-extras? (y/n)"
+read CHOICE
+if test $CHOICE = "y"; then
+  sudo apt install ubuntu-restricted-extras
+fi
+sleep 2
+clear
+
+echo "Do you want to Brave browser? (y/n)"
+read CHOICE
+if test $CHOICE = "y"; then
+  sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+  echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+  sudo apt update
+  sudo apt install -y brave-browser
+fi
+sleep 2
+clear
+
+echo "Do you want to install ubuntu fonts? (y/n)"
+read CHOICE
+if test $CHOICE = "y"; then
+  sudo apt install fonts-ubuntu fonts-ubuntu-console
+fi
+sleep 2
+clear
+
+echo "Do you want to install nautilus-nextcloud? (y/n)"
+read CHOICE
+if test $CHOICE = "y"; then
+  sudo apt install nautilus-nextcloud
+fi
+sleep 2
+clear
+
+echo "Do you want to install nautilus-gtkhash? (y/n)"
+read CHOICE
+if test $CHOICE = "y"; then
+  sudo apt install nautilus-gtkhash
+fi
+sleep 2
+clear
+
+# Adding flathub repository
+echo "Do you want to add the flathub repository? (y/n)"
+read CHOICE
+if test $CHOICE = "y"; then
+  flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+fi
+sleep 2
+clear
+
+echo "Do you want to install flatpak Extension Manager? (y/n)"
+read CHOICE
+if test $CHOICE = "y"; then
+  flatpak install --user --assumeyes com.mattjakeman.ExtensionManager
+fi
+sleep 2
+clear
+
+echo "Do you want to install Whatsapp web client? (y/n)"
+read CHOICE
+if test $CHOICE = "y"; then
+  flatpak install --user --assumeyes io.github.mimbrero.WhatsAppDesktop
+fi
+sleep 2
+clear
+
+echo "Do you want to install Anki flashcard app? (y/n)"
+read CHOICE
+if test $CHOICE = "y"; then
+  flatpak install --user --assumeyes net.ankiweb.Anki
+fi
+sleep 2
+clear
+
+echo "Do you want to install jellyfin media player? (y/n)"
+read CHOICE
+if test $CHOICE = "y"; then
+  flatpak install --user --assumeyes com.github.iwalton3.jellyfin-media-player
+fi
+sleep 2
+clear
+
+echo "Do you want to install Discord web client? (y/n)"
+read CHOICE
+if test $CHOICE = "y"; then
+  flatpak install --user --assumeyes com.discordapp.Discord
+fi
+sleep 2
+clear
+
+echo "Do you want to create, enable and start the cya systemd daemon? (y/n)"
+read CHOICE
+if test $CHOICE = "y"; then
+  sudo cp etc/cya* /etc/systemd/system
+  sudo chown root:root /etc/systemd/system/cya.service /etc/systemd/system/cya.timer
+  sudo chmod 644 /etc/systemd/system/cya.service /etc/systemd/system/cya.timer
+  sudo systemctl enable cya.timer
+  sudo systemctl start cya.timer
+  sleep 2
+  systemctl status cya.timer
+
+fi
+sleep 2
+clear
+
+echo "Do you want to install yt-dlp (toutube downloader)? (y/n)"
+read CHOICE
+if test $CHOICE = "y"; then
+  sudo curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp
+  sudo  chmod a+rx /usr/local/bin/yt-dlp
+fi
+sleep 2
+clear
+
+echo "Do you want to install QR app? (y/n)"
+read CHOICE
+if test $CHOICE = "y"; then
+  flatpak install --user --assumeyes dev.lasheen.qr
+fi
+sleep 2
+clear
+
+echo "Done !!!"
+
+
+

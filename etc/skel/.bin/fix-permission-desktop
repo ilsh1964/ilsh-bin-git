@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+cd $HOME
+sudo chown -R $USER:$USER .local/share/backgrounds .config/vifm .config/libreoffice .fonts .icons .oh-my-zsh .vim .bash_aliases .bashrc .nanorc .tmux.conf .vimrc .zshrc
+cd /etc/systemd/system
+sudo chown root:root cya.service cya.timer
+sudo chmod 644 cya.service cya.timer
+cd /usr/local/bin
+sudo chown root:root behafucha bu bu-nodep classic-fm cya del-files fix-apt fix-permission-desktop ipconfig manage-ssh ts
+

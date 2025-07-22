@@ -1,0 +1,7 @@
+[Unit]
+Description=Run cya
+[Service]
+User=root
+Group=root
+Type=oneshot
+ExecStart=/home/ilan/.bin/cya

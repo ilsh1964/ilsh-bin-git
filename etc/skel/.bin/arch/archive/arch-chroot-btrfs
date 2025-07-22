@@ -1,0 +1,15 @@
+lsblk
+
+# identify your disk partition
+mount /dev/nvme0n1p2 /mnt -o subvol=@
+mount /dev/nvme0n1p2 /mnt/root -o subvol=@root
+mount /dev/nvme0n1p2 /mnt/home -o subvol=@home
+mount /dev/nvme0n1p2 /mnt/var/log -o subvol=@log
+mount /dev/nvme0n1p2 /mnt/var/cache -o subvol=@cache
+mount /dev/nvme0n1p2 /mnt/var/tmp -o subvol=@tmp
+mount /dev/nvme0n1p2 /mnt/srv -o subvol=@srv
+mount /dev/nvme0n1p2 /mnt/swap -o subvol=@swap
+
+mount /dev/nvme0n1p1 /mnt/boot/efi
+
+arch-chroot /mnt

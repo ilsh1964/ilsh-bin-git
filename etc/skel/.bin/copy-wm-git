@@ -1,0 +1,5 @@
+#!/bin/bash
+cp -fpr /etc/skel/.config/arco-chadwm  ~/.config/
+cp -fpr /etc/skel/.config/owesome  ~/.config/
+cp -fpr /etc/skel/.config/i3  ~/.config/
+cp -fpr /etc/skel/.config/qtile  ~/.config/

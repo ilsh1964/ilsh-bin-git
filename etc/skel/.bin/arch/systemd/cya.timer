@@ -1,0 +1,7 @@
+[Unit]
+Description=Run cya every week
+[Timer]
+OnCalendar=weekly
+Persistent=true
+[Install]
+WantedBy=multi-user.target
