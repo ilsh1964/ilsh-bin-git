@@ -57,6 +57,8 @@ packages=(
  gzip
  htop
  hwinfo
+ ilsh-shell-git
+ ilsh-bin-git
  intel-ucode
  inxi
  keepassxc

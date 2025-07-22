@@ -80,14 +80,12 @@ func_install_chadwm() {
     dash
     dmenu
     edu-arc-dawn-git
-    edu-chadwm-git
+    ilsh-wm-git
     sddm
     edu-sddm-simplicity-git
     eww
-    feh
     gcc
     gvfs
-    lolcat
     lxappearance-gtk3
     make
     neo-candy-icons-git
