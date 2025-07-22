@@ -29,8 +29,6 @@ packages=(
  duf
  easytag
  edu-neo-candy-arc-git
- edu-rofi-git
- edu-rofi-themes-git
  edu-sddm-simplicity-git
  espeak-ng
  evince
