@@ -1,0 +1,58 @@
+#!/bin/bash
+
+# Check for input file
+if [ -z "$1" ]; then
+  echo "Usage: convert-video <input_video_file>"
+  exit 1
+fi
+
+INPUT="$1"
+
+# Check if file exists
+if [ ! -f "$INPUT" ]; then
+  echo "File '$INPUT' does not exist."
+  exit 1
+fi
+
+# Get filename without extension
+BASENAME=$(basename "$INPUT")
+FILENAME="${BASENAME%.*}"
+
+# Show resolution menu
+clear
+echo "Select conversion format:"
+echo "1. Convert to mp4 1920x1080 (1080p landscape)"
+echo "2. Convert to mp4 1280x720  (720p landscape)"
+echo "3. Convert to mp4 1080x1920 (1080p portrait)"
+echo "4. Convert to mp4 720x1280  (720p portrait)"
+read -rp "Enter your choice [1-4]: " CHOICE
+
+# Set resolution based on choice
+case "$CHOICE" in
+  1) RES="1920x1080" ;;
+  2) RES="1280x720" ;;
+  3) RES="1080x1920" ;;
+  4) RES="720x1280" ;;
+  *) echo "Invalid choice."; exit 1 ;;
+esac
+
+# Ask for ffmpeg preset
+echo
+echo "Select encoding preset (affects speed and compression ratio):"
+echo "1. slow      (good quality, faster)"
+echo "2. veryslow  (best quality, slower)"
+read -rp "Enter your choice [1-2]: " PRESET_CHOICE
+
+case "$PRESET_CHOICE" in
+  1) PRESET="slow" ;;
+  2) PRESET="veryslow" ;;
+  *) echo "Invalid choice."; exit 1 ;;
+esac
+
+OUTPUT="${FILENAME}_${RES}_${PRESET}.mp4"
+
+# Perform conversion using ffmpeg with selected quality settings
+ffmpeg -i "$INPUT" -vf "scale=$RES" -c:v libx264 -preset "$PRESET" -crf 18 -c:a aac -b:a 192k "$OUTPUT"
+
+echo "Conversion completed: $OUTPUT"
+

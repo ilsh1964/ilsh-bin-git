@@ -1,7 +1,7 @@
 # Maintainer: Ilan Shavit <ilan.shavit@gmail.com>
 pkgname=ilsh-bin-git
 pkgver=1
-pkgrel=7
+pkgrel=8
 pkgdesc="All my ~/.bin scripts"
 arch=('any')
 url="https://github.com/ilsh1964/ilsh-bin-git"

@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# Function to rename images based on EXIF date
+# sudo pacman -S exiftool \ sudo apt install libimage-exiftool-perl
+rename_images() {
+    extension="$1"
+    shopt -s nullglob
+    for file in *."$extension"; do
+        # Extract date using exiftool
+        date_taken=$(exiftool -d "%Y-%m-%d" -DateTimeOriginal "$file" | awk -F': ' '{print $2}')
+
+        if [ -z "$date_taken" ]; then
+            echo "No date found for $file — skipping"
+            continue
+        fi
+
+        base="${file%.*}"
+        newname="${base}_${date_taken}.${extension}"
+        mv -i "$file" "$newname"
+        echo "Renamed: $file -> $newname"
+    done
+}
+
+# Menu
+while true; do
+    clear
+    echo "Choose an option:"
+    echo "1. Rename all jpeg images"
+    echo "2. Rename all jpg images"
+    echo "3. Rename all png images"
+    echo "4. Rename all heic images"
+    echo "5. Exit"
+    read -p "Enter your choice: " choice
+
+    case $choice in
+        1) rename_images "jpeg" ;;
+        2) rename_images "jpg" ;;
+        3) rename_images "png" ;;
+        4) rename_images "heic" ;;
+        5) echo "Goodbye!"; break ;;
+        *) echo "Invalid option, try again." ;;
+    esac
+done
+
