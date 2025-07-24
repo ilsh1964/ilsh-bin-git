@@ -13,6 +13,7 @@ packages=(
  archlinux-logout-git
  archlinux-tweak-tool-git
  aspell
+ aspell-en
  aspell-he
  avahi
  awesome-terminal-fonts
