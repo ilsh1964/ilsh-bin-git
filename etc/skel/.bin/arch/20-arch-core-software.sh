@@ -12,6 +12,8 @@ packages=(
  arc-gtk-theme
  archlinux-logout-git
  archlinux-tweak-tool-git
+ aspell
+ aspell-he
  avahi
  awesome-terminal-fonts
  bash-completion
