@@ -164,7 +164,7 @@ else
     echo "➕ Added line to $PROFILE"
 fi
 
-sudo mkdir -p  /etc/sddm/scripts
-sudo cp -p Xsetup /etc/sddm/scripts
+sudo mkdir -p  /usr/share/sddm/scripts/
+sudo cp -p Xsetup /usr/share/sddm/scripts/Xsetup
 
 

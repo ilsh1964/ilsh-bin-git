@@ -24,6 +24,7 @@ packages=(
  brave-bin
  btop
  catfish
+ caligula
  curl
  dialog
  dmenu
