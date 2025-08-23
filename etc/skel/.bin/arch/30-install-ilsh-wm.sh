@@ -86,6 +86,7 @@ func_install_chadwm() {
     eww
     gcc
     gvfs
+    imlib2
     lxappearance-gtk3
     make
     neo-candy-icons-git

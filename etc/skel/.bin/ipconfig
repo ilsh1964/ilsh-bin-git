@@ -1,9 +1,8 @@
 #!/bin/bash
 
-# ipconfig - Version 1.1 - Arch Fix
-
+# ipconfig - Version 2.0 (2025-08-23 - Shavit Ilan)
 echo
-echo "IP Config - Version 1.0"
+echo "IP Config - Version 2.0"
 echo "======================="
 echo
 HOSTNAME=$(cat /etc/hostname)
@@ -13,8 +12,8 @@ echo
 CARD=$(ip a | grep ": en\|: et"  |cut -d: -f2 |cut -d" " -f2)
 STATUS=$(ip a | grep ": en\|: et" | grep "state UP")
 if test $? = "0"; then
-    IP=$(ip a | grep "inet "| grep -v "127.0.0.1"  | head -n 1 | cut -d"/" -f1 | cut -d" " -f6)
-    SUBNET=$(ip a | grep $IP | cut -d"/" -f2 | cut -d' ' -f1)
+    IP=$(/usr/bin/ip -br a |grep en | tr -s ' ' | cut -d" " -f3 | cut -d"/" -f1)
+    SUBNET=$(/usr/bin/ip -br a |grep en | tr -s ' ' | cut -d" " -f3 | cut -d"/" -f2)
     echo "WIRED:"
     echo "    STATUS  : UP"
     echo "    NAME    : $CARD"
@@ -29,11 +28,11 @@ fi
 ### IP ADDRESS - WIRELESS ###
 echo
 echo "WIRELESS:"
-CARD=$(ip a | grep ": wl"  |cut -d: -f2 |cut -d" " -f2)
-STATUS=$(ip a | grep ": wl" | grep "state UP")
-if test $? = "0"; then
-    IP=$(ip a | grep -A 3  ": wl" | grep "inet " |cut -d"/" -f1 |cut -d" " -f6)
-    SUBNET=$(ip a | grep -A 3 ": wl" | grep "inet " | cut -d"/" -f2 | cut -d' ' -f1)
+CARD=$(ip -br a | grep "wl"  |tr -s ' ' |cut -d" " -f1)
+STATUS=$(ip -br a | grep "wl" | grep "UP")
+if [ $? = "0" ]; then
+    IP=$(/usr/bin/ip -br a |grep "wl" | tr -s ' ' | cut -d" " -f3 | cut -d"/" -f1)
+    SUBNET=$(/usr/bin/ip -br a |grep "wl" | tr -s ' ' | cut -d" " -f3 | cut -d"/" -f2)
     echo "    STATUS  : UP"
     echo "    NAME    : $CARD"
     echo "    IP      : $IP"
@@ -50,18 +49,13 @@ echo
 DEFAULT=$(ip route show | head -n 1 | cut -d" " -f3)
 echo "Default   GW: $DEFAULT"
 
-### DHCP ###
-DHCP=$(ip r | head -n 1 | cut -d" " -f3)
-echo "DHCP  Server: $DHCP"
-
 ### DNS ###
-# DNS=$(resolvectl 2>/dev/null |grep "Current DNS Server" | cut -d' ' -f4 | tr '\n' ' ')
-DNS=$(cat /etc/resolv.conf | grep -v "#" | grep -v ":" | grep nameserver | cut -d" " -f2)
+TESTCMD=$(resolvectl 2>/dev/null)
+if [ $? = "0" ]; then
+  DNS=$(resolvectl 2>/dev/null |grep "Current DNS Server" | cut -d' ' -f4 | tr '\n' ' ')
+else
+  DNS=$(grep nameserver /etc/resolv.conf | head -n 1 | cut -d" " -f2)
+fi
 echo "DNS   Server: $DNS"
-
-### NETWORK CARD ###
-CARD=$(ip a |grep 'state UP' | head -n 1 |cut -d: -f2 |cut -d" " -f2)
-echo "Network Card: $CARD"
-echo
 
 exit 0
