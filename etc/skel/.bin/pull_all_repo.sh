@@ -15,10 +15,16 @@ cd ../nemesis_repo
 git pull
 cd ../kirodubes
 git pull
+cd ..
 
 # Mench repo
-cd ../../mench
+cd ../mench
 git pull
 cd ../
+
+
+# dwm-setup
+cd dwm-setup
+git pull
 
 popd
