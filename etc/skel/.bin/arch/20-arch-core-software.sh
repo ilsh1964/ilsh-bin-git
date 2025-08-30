@@ -26,6 +26,7 @@ packages=(
  catfish
  caligula
  curl
+ dash
  dialog
  dmenu
  dosfstools
@@ -47,6 +48,8 @@ packages=(
  firefox-ublock-origin
  font-manager
  fzf
+ geany
+ geany-plugins
  gimp
  git
  gparted
@@ -103,7 +106,6 @@ packages=(
  scrot
  simple-scan
  stow
- sublime-text-4
  surfn-icons-git
  sxhkd
  synology-drive
