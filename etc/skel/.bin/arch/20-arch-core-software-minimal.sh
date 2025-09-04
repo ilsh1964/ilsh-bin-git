@@ -17,6 +17,7 @@ packages=(
  downgrade
  duf
  edu-neo-candy-arc-git
+ edu-rofi-themes-git
  edu-sddm-simplicity-git
  evince
  ffmpeg
