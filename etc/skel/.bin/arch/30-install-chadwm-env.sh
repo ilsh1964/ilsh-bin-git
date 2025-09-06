@@ -80,7 +80,10 @@ func_install_chadwm() {
     dash
     dmenu
     edu-arc-dawn-git
-    ilsh-wm-git
+    ilsh-chadwm-git
+    ilsh-util-git
+    ilsh-shell-git
+    ilsh-bin-git
     sddm
     edu-sddm-simplicity-git
     eww

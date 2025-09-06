@@ -9,22 +9,14 @@ packages=(
  alacritty-theme
  arc-gtk-theme
  archlinux-logout-git
- archlinux-tweak-tool-git
  awesome-terminal-fonts
  bat
  dialog
  dmenu
- downgrade
- duf
- edu-neo-candy-arc-git
  edu-rofi-themes-git
  edu-sddm-simplicity-git
  evince
- ffmpeg
- fish
  firefox
- firefox-i18n-he
- firefox-ublock-origin
  gvfs
  gvfs-dnssd
  gvfs-nfs
@@ -33,24 +25,11 @@ packages=(
  ilsh-bin-git
  ilsh-shell-git
  ilsh-util-git
- kvantum-qt5
- mcrypt-bin
  nano
  noto-fonts
  ntp
- numlockx
- pa-applet-git
- polkit-gnome
- ptyxis
  rofi
- surfn-icons-git
  thunar
- thunar-archive-plugin
- thunar-volman
- unzip
- vim
- xarchiver
- xfce4-clipman-plugin
  zenity
  )
 
