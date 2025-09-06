@@ -90,6 +90,7 @@ packages=(
  pa-applet-git
  pacmanlogviewer
  paru
+ pdfarranger
  pdftricks
  perl-image-exiftool
  picom
