@@ -25,6 +25,7 @@ packages=(
  btop
  catfish
  caligula
+ czkawka-gui
  curl
  dash
  dialog
