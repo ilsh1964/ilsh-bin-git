@@ -17,6 +17,7 @@ packages=(
  edu-sddm-simplicity-git
  evince
  firefox
+ fish
  gvfs
  gvfs-dnssd
  gvfs-nfs
@@ -31,6 +32,7 @@ packages=(
  rofi
  thunar
  zenity
+ zsh
  )
 
 
@@ -61,7 +63,7 @@ sudo systemctl enable avahi-daemon.service
 sudo systemctl enable ntpd.service
 sudo systemctl enable bluetooth.service
 sudo usermod -aG vboxusers $USER
-
+chsh $USER -s /usr/bin/fish
 
 ##############################################################################################################
 ##                                              HELP                                                        ##

@@ -173,6 +173,7 @@ sudo systemctl enable ntpd.service
 sudo systemctl enable bluetooth.service
 sudo usermod -aG vboxusers $USER
 
+chsh $USER -s /usr/bin/fish
 
 ##############################################################################################################
 ##                                              HELP                                                        ##
