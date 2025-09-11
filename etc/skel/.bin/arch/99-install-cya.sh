@@ -26,6 +26,6 @@ echo "Done"
 echo
 echo
 echo "EXAMPLE:"
-echo "~/home/cya/cya.conf:"
+echo "/home/cya/cya.conf:"
 echo 'DISCLAIMER="off"'
 echo 'MAX_SAVES="2"'
