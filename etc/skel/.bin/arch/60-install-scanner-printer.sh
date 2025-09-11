@@ -9,7 +9,7 @@ clear
 
 echo "Install Printer Support MFCJ497DW..."
 sudo pacman -S ghostscript cups lib32-glibc
-sudo pacman -S brother-mfc-j470dw
+sudo pacman -S brother-mfc-j497dw
 sudo systemctl start cups
 sudo systemctl enable cups
 
