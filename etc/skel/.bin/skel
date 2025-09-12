@@ -13,7 +13,6 @@ copy_all_skel() {
 }
 
 copy_bash_config() {
-    cp -v /etc/skel/.bashrc ~/
     cp -v /etc/skel/.bashrc-* ~/
 }
 
@@ -22,7 +21,6 @@ copy_fish_config() {
 }
 
 copy_zsh_config() {
-    cp -v /etc/skel/.zshrc ~/
     cp -v /etc/skel/.zshrc-personal ~/
     rsync -a --delete /etc/skel/.oh-my-zsh/ ~/.oh-my-zsh/
 }
@@ -38,7 +36,7 @@ restore_suckless_config() {
 }
 
 restore_vim_config() {
-    cp -v /etc/skel/.vimrc ~/
+    cp /etc/skel/.vimrc ~/
     rsync -a --delete /etc/skel/.vim/ ~/.vim/
 }
 
