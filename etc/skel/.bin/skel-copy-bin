@@ -1,2 +1,2 @@
 #!/bin/bash
-cp -vr /etc/skel/.bin/. ~/.bin/
+rsync -a --delete /etc/skel/.bin/  ~/.bin/

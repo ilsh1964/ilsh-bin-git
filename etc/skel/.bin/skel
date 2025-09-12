@@ -24,14 +24,14 @@ copy_fish_config() {
 copy_zsh_config() {
     cp -v /etc/skel/.zshrc ~/
     cp -v /etc/skel/.zshrc-personal ~/
-    cp -vr /etc/skel/.oh-my-zsh/ ~/ 2>/dev/null
+    rsync -a --delete /etc/skel/.oh-my-zsh/ ~/.oh-my-zsh/
 }
 
-restore_chadwm_config() {
-    echo -n "Are you sure you want to restore chadwm wm config? Type YES to confirm: "
+restore_suckless_config() {
+    echo -n "Are you sure you want to restore suckless config (include chadwm)? Type YES to confirm: "
     read confirm
     if [[ "$confirm" == "YES" ]]; then
-        cp -vr /etc/skel/.config/suckless ~/.config/ 2>/dev/null
+        rsync -a --delete /etc/skel/.config/suckless/ ~/.config/suckless/
     else
         echo "Aborted."
     fi
@@ -39,7 +39,7 @@ restore_chadwm_config() {
 
 restore_vim_config() {
     cp -v /etc/skel/.vimrc ~/
-    cp -vr /etc/skel/.vim ~/ 2>/dev/null
+    rsync -a --delete /etc/skel/.vim/ ~/.vim/
 }
 
 clear
@@ -48,7 +48,7 @@ echo "1. Copy WHOLE /etc/skel to ~"
 echo "2. Restore bash config from /etc/skel"
 echo "3. Restore fish config from /etc/skel"
 echo "4. Restore zsh config from /etc/skel"
-echo "5. Restore chadwm wm config from /etc/skel"
+echo "5. Restore suckless config (include chadwm) from /etc/skel"
 echo "6. Restore vim config from /etc/skel"
 echo "==============================="
 echo -n "Choose an option [1-6]: "
@@ -62,7 +62,7 @@ case $choice in
     2) copy_bash_config ;;
     3) copy_fish_config ;;
     4) copy_zsh_config ;;
-    5) restore_chadwm_config ;;
+    5) restore_suckless_config ;;
     6) restore_vim_config ;;
     *) echo "Invalid option." ;;
 esac

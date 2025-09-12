@@ -1,14 +1,16 @@
 #!/bin/bash
-cp -v /etc/skel/.nanorc  ~/
-cp -v /etc/skel/.tmux.conf  ~/
-cp -v /etc/skel/.config/redshift.conf ~/.config/
-cp -vr /etc/skel/.config/alacritty/. ~/.config/alacritty/
-cp -vr /etc/skel/.config/btop/. ~/.config/btop/
-cp -vr /etc/skel/.config/fastfetch/. ~/.config/fastfetch/
-cp -vr /etc/skel/.config/grsync/. ~/.config/grsync/
-cp -vr /etc/skel/.config/Kvantum/. ~/.config/Kvantum/
-cp -vr /etc/skel/.config/rofi/. ~/.config/rofi/
-cp -vr /etc/skel/.config/Thunar/. ~/.config/Thunar/
-cp -vr /etc/skel/.config/variety/. ~/.config/variety/
-cp -vr /etc/skel/.config/vifm/. ~/.config/vifm/
-cp -vr /etc/skel/.config/xfce4/. ~/.config/xfce4/
+cp /etc/skel/.nanorc  ~/
+cp /etc/skel/.tmux.conf  ~/
+cp /etc/skel/.vimrc  ~/
+cp /etc/skel/.config/redshift.conf ~/.config/
+rsync -a --delete /etc/skel/.config/alacritty/ ~/.config/alacritty/
+rsync -a --delete /etc/skel/.config/btop/ ~/.config/btop/
+rsync -a --delete /etc/skel/.config/fastfetch/ ~/.config/fastfetch/
+rsync -a --delete /etc/skel/.config/grsync/ ~/.config/grsync/
+rsync -a --delete /etc/skel/.config/Kvantum/ ~/.config/Kvantum/
+rsync -a --delete /etc/skel/.config/rofi/ ~/.config/rofi/
+rsync -a --delete /etc/skel/.config/Thunar/ ~/.config/Thunar/
+rsync -a --delete /etc/skel/.config/variety/ ~/.config/variety/
+rsync -a --delete /etc/skel/.config/vifm/ ~/.config/vifm/
+rsync -a --delete /etc/skel/.config/xfce4/ ~/.config/xfce4/
+rsync -a --delete /etc/skel/.vim/ ~/.vim/
