@@ -30,6 +30,7 @@ packages=(
  noto-fonts
  ntp
  rofi
+ rsync
  thunar
  zenity
  zsh
