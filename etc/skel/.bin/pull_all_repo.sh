@@ -14,11 +14,13 @@ cd ..
 # Mench repo
 cd ../mench
 git pull
-cd ../
+cd ..
 
 
-# dwm-setup
+# drew Grif
 cd drewgrif/dwm-setup
 git pull
-
+cd ..
+cd butterscripts
+git pull
 popd
